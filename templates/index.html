@@ -1,1 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>YouTube Viral Predictor</title>
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            AI POWERED PREDICTION
+        </div>
+
+
+        <h1>
+            Predict Your
+            <span>YouTube Success</span>
+        </h1>
+
+
+        <p>
+            Enter your YouTube video information and let our
+            Machine Learning model predict whether the video
+            is likely to become viral.
+        </p>
+
+
+        <a href="#predictor"
+           class="hero-button">
+
+            Try Prediction ↓
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+
+    <section class="intro">
+
+        <h2>
+            🎬 YouTube Viral Predictor
+        </h2>
+
+        <p>
+            Enter your video information below and receive
+            an instant prediction.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= PREDICTION FORM ================= -->
+
+    <section id="predictor"
+             class="prediction-card">
+
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>
+                    Enter Video Details
+                </h2>
+
+                <p>
+                    Fill in all information for prediction.
+                </p>
+
+            </div>
+
+
+            <div class="icon-box">
+
+                🤖
+
+            </div>
+
+        </div>
+
+
+
+        <form id="predictionForm">
+
+
+            <div class="form-grid">
+
+
+                <!-- VIDEO DURATION -->
+
+                <div class="form-group">
+
+                    <label>
+                        Video Duration (Seconds)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="duration_sec"
+                        placeholder="Example: 600"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- TITLE LENGTH -->
+
+                <div class="form-group">
+
+                    <label>
+                        Title Length
+                    </label>
+
+                    <input
+                        type="number"
+                        id="title_length"
+                        placeholder="Example: 50"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- THUMBNAIL FACE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Face Visible in Thumbnail?
+                    </label>
+
+                    <select
+                        id="thumbnail_face"
+                        required
+                    >
+
+                        <option value="">
+                            Select Yes or No
+                        </option>
+
+                        <option value="Yes">
+                            Yes
+                        </option>
+
+                        <option value="No">
+                            No
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- UPLOAD HOUR -->
+
+                <div class="form-group">
+
+                    <label>
+                        Upload Hour (0-23)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="upload_hour"
+                        placeholder="Example: 18"
+                        min="0"
+                        max="23"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- TAGS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Number of Tags
+                    </label>
+
+                    <input
+                        type="number"
+                        id="tags_count"
+                        placeholder="Example: 10"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label>
+                        Description Length
+                    </label>
+
+                    <input
+                        type="number"
+                        id="description_length"
+                        placeholder="Example: 250"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- SUBSCRIBERS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Channel Subscribers
+                    </label>
+
+                    <input
+                        type="number"
+                        id="subscriber_count"
+                        placeholder="Example: 50000"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- VIEWS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Views
+                    </label>
+
+                    <input
+                        type="number"
+                        id="views"
+                        placeholder="Example: 100000"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- LIKES -->
+
+                <div class="form-group">
+
+                    <label>
+                        Likes
+                    </label>
+
+                    <input
+                        type="number"
+                        id="likes"
+                        placeholder="Example: 5000"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- COMMENTS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Comments
+                    </label>
+
+                    <input
+                        type="number"
+                        id="comments"
+                        placeholder="Example: 500"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- SHARES -->
+
+                <div class="form-group">
+
+                    <label>
+                        Shares
+                    </label>
+
+                    <input
+                        type="number"
+                        id="shares"
+                        placeholder="Example: 200"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Video Category
+                    </label>
+
+                    <select
+                        id="category"
+                        required
+                    >
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+
+                        {% for category in categories %}
+
+                        <option value="{{ category }}">
+
+                            {{ category }}
+
+                        </option>
+
+                        {% endfor %}
+
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- UPLOAD DAY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Upload Day
+                    </label>
+
+                    <select
+                        id="upload_day"
+                        required
+                    >
+
+                        <option value="">
+                            Select Upload Day
+                        </option>
+
+
+                        {% for day in upload_days %}
+
+                        <option value="{{ day }}">
+
+                            {{ day }}
+
+                        </option>
+
+                        {% endfor %}
+
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PREDICT BUTTON -->
+
+            <button
+                type="submit"
+                id="predictButton"
+            >
+
+                <span id="buttonText">
+
+                    Predict Video Performance
+
+                </span>
+
+                ✨
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- ================= RESULT ================= -->
+
+        <div
+            id="result"
+            class="result hidden"
+        >
+
+
+            <div
+                id="resultIcon"
+                class="result-icon"
+            >
+
+                🎯
+
+            </div>
+
+
+            <h2 id="predictionText"></h2>
+
+
+            <p id="predictionMessage"></p>
+
+
+            <div
+                id="confidenceBox"
+                class="confidence-box"
+            >
+
+                <span>
+                    Model Confidence
+                </span>
+
+                <strong id="confidence"></strong>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= PLOTS ================= -->
+
+    <section class="plots-section">
+
+
+        <div class="section-title">
+
+            <span>
+                DATA INSIGHTS
+            </span>
+
+
+            <h2>
+                Dataset Visualizations
+            </h2>
+
+
+            <p>
+                Explore some visualizations from the
+                YouTube viral prediction dataset.
+            </p>
+
+
+        </div>
+
+
+
+        <div class="plots-grid">
+
+
+            <!-- FIRST IMAGE -->
+
+            <div class="plot-card">
+
+                <img
+                    src="{{ url_for('static', filename='my_image.png') }}"
+                    alt="Dataset Visualization"
+                >
+
+                <h3>
+                    Categories
+                </h3>
+
+            </div>
+
+
+
+            <!-- SECOND IMAGE -->
+
+            <div class="plot-card">
+
+                <img
+                    src="{{ url_for('static', filename='upload_day.png') }}"
+                    alt="Upload Day Analysis"
+                >
+
+                <h3>
+                    Upload Day Analysis
+                </h3>
+
+            </div>
+            <!-- THIRD IMAGE -->
+            <div class="plot-card">
+
+                <img
+                    src="{{ url_for('static', filename='category_viral.png') }}"
+                    alt="Category viral"
+                >
+
+                <h3>
+                    Category viral
+                </h3>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+    
+<!-- ================= HOW IT WORKS / KEY INSIGHTS ================= -->
+<section class="insights-section">
+    <div class="section-title">
+        <span>DATA INSIGHTS</span>
+        <h2>What Makes a Video Go Viral?</h2>
+        <p>Based on analysis of 12,000 videos in our dataset (20% labeled viral)</p>
+    </div>
+
+    <div class="insights-grid">
+        <div class="insight-card">
+            <div class="insight-icon">📊</div>
+            <h3>Viral Threshold</h3>
+            <p>Videos labeled viral start from <strong>~735,000 views</strong>. Every video above 1 million views in the dataset is viral. Non-viral videos never exceed this range.</p>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">👥</div>
+            <h3>Biggest Factor: Subscribers</h3>
+            <p>Channel size is the strongest predictor. Channels with <strong>1M+ subscribers</strong> have a 61% viral rate. Below 100k subscribers the rate drops close to zero.</p>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">🔥</div>
+            <h3>Category Impact</h3>
+            <p><strong>Music (57%)</strong> and <strong>Comedy (35%)</strong> dominate. Sports and Gaming also perform well. Vlogs, Travel, and Education have the lowest viral rates.</p>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">⏱️</div>
+            <h3>Shorter Performs Better</h3>
+            <p>Videos under 5 minutes have a <strong>38% viral rate</strong>. Longer videos (10+ min) drop to around 15%. Duration has a clear negative correlation with going viral.</p>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">👍</div>
+            <h3>Engagement Volume Matters</h3>
+            <p>Absolute likes, comments, and shares are strongly linked to viral status. Interestingly, engagement <em>rates</em> (likes per view) are almost the same for viral and non-viral videos.</p>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">🖼️</div>
+            <h3>Thumbnail Face Helps Slightly</h3>
+            <p>Videos with a face visible in the thumbnail have a modestly higher viral rate (23% vs 18%). Upload day and hour show almost no meaningful difference.</p>
+        </div>
+    </div>
+
+    <div class="insights-note">
+        <p><strong>How the model works:</strong> A Logistic Regression model trained on duration, title length, thumbnail face, upload hour/day, tags, description length, subscriber count, views, likes, comments, shares, and video category. It predicts the probability that a video will cross the viral threshold based on patterns learned from the dataset.</p>
+    </div>
+</section>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+
+    <h3>
+        🎬 YouTube Viral Predictor
+    </h3>
+
+
+    <p>
+        Built with Machine Learning, Flask & Python
+    </p>
+
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+
+</body>
+
+</html>
